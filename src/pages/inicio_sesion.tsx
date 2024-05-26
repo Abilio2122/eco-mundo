@@ -1,6 +1,7 @@
 import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar ,IonButton, IonRouterLink} from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
+import "./Inicio_sesion.css"
 
 const Login: React.FC = () => {
   return (
@@ -14,8 +15,19 @@ const Login: React.FC = () => {
         <header>
           <h1>¡Bienvenido!</h1>
           <p>Por favor, inicia sesión para continuar.</p>
-          <button> <a href="index.html">Inicio</a></button>
-          <button> <a href="register.html">Registro</a></button>
+
+          <IonButton className="custom_button_ionic">
+            <IonRouterLink href="/Tab3" color="primary">
+              <span role="img" aria-label="Inicio" >Inicio</span>
+            </IonRouterLink>
+          </IonButton>
+
+          <IonButton className="custom_button_ionic">
+            <IonRouterLink href="/registro" color="primary">
+              <span role="img" aria-label="Registrarse" >Registro</span>
+            </IonRouterLink>
+          </IonButton>
+
         </header>
 
         <main>

@@ -1,0 +1,88 @@
+/*Tamaño de titulos*/
+h1{ font-size: 3.5em;}
+h2{ font-size: 2.7em;}
+h3{ font-size: 1.9em;}
+
+/*Tamaño de Parrafo*/
+p{ font-size: 1.50em;}
+/*Sacar puntero*/
+ul{ font-size: 1.50em;}
+/*tamaño de listas */
+li{ font-size: 1.25em;}
+
+a{font-size: 2em;}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    )
+    ,url(../MEDIA/bg1.jpg);
+    
+}
+
+/* Estilos para el encabezado */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 5px 0;
+    text-align: center;
+}
+button {
+    background-color: #00ff40;
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+
+button{
+    background-color: #4CAF50;
+}
+
+a {
+    color: #fff;
+    text-decoration: center;
+    margin: 0 10px;
+  }
+
+/* Estilos para las secciones */
+section {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para las imágenes */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
+
+/* Estilos para el pie de página */
+footer{
+    background-color: rgb(54, 55, 58);
+}
+
+footer p{
+    margin: 0;
+    padding: 12px;
+    color: rgb(100,100,100);
+}
+
+footer .container{
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}

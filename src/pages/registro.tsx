@@ -1,4 +1,5 @@
 import React from 'react';
+import './registro.css';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonInput, IonLabel, IonItem, IonList, IonSelect, IonSelectOption, IonCheckbox, IonFooter } from '@ionic/react';
 
 const Register: React.FC = () => {
@@ -10,58 +11,63 @@ const Register: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                <IonList>
-                    <IonItem>
-                        <IonLabel position="stacked">Nombre de Usuario</IonLabel>
-                        <IonInput type="text" required></IonInput>
-                    </IonItem>
-                    <IonItem>
-                        <IonLabel position="stacked">RUT</IonLabel>
-                        <IonInput type="text" required></IonInput>
-                    </IonItem>
-                    <IonItem>
-                        <IonLabel position="stacked">Correo Electrónico</IonLabel>
-                        <IonInput type="email" required></IonInput>
-                    </IonItem>
-                    <IonItem>
-                        <IonLabel position="stacked">Región</IonLabel>
-                        <IonSelect placeholder="Selecciona..." required>
-                            <IonSelectOption value="region1">Región de Arica y Parinacota</IonSelectOption>
-                            <IonSelectOption value="region2">Región de Tarapacá</IonSelectOption>
-                            <IonSelectOption value="region3">Región de Antofagasta</IonSelectOption>
-                            <IonSelectOption value="region4">Región de Atacama</IonSelectOption>
-                            <IonSelectOption value="region5">Región de Coquimbo</IonSelectOption>
-                            <IonSelectOption value="region6">Región de Valparaíso</IonSelectOption>
-                            <IonSelectOption value="region7">Región Metropolitana</IonSelectOption>
-                            <IonSelectOption value="region8">Región de O’Higgins</IonSelectOption>
-                            <IonSelectOption value="region9">Región del Maule</IonSelectOption>
-                            <IonSelectOption value="region10">Región del Ñuble</IonSelectOption>
-                            <IonSelectOption value="region11">Región del Biobío</IonSelectOption>
-                            <IonSelectOption value="region12">Región de La Araucanía</IonSelectOption>
-                            <IonSelectOption value="region13">Región de Los Ríos</IonSelectOption>
-                            <IonSelectOption value="region14">Región de Los Lagos</IonSelectOption>
-                            <IonSelectOption value="region15">Región de Aysén</IonSelectOption>
-                            <IonSelectOption value="region16">Región de Magallanes</IonSelectOption>
-                        </IonSelect>
-                    </IonItem>
-                    <IonItem>
-                        <IonLabel position="stacked">Comuna</IonLabel>
-                        <IonInput type="text" required></IonInput>
-                    </IonItem>
-                    <IonItem>
-                        <IonLabel position="stacked">Contraseña</IonLabel>
-                        <IonInput type="password" required></IonInput>
-                    </IonItem>
-                    <IonItem>
-                        <IonLabel position="stacked">Confirmar Contraseña</IonLabel>
-                        <IonInput type="password" required></IonInput>
-                    </IonItem>
-                    <IonItem>
-                        <IonCheckbox slot="start" required />
-                        <IonLabel>Acepto los términos y condiciones</IonLabel>
-                    </IonItem>
-                </IonList>
-                <IonButton expand="block" type="submit">Registrarse</IonButton>
+                <main>
+                    <form action="#" method="post">
+                        <div>
+                            <label id="username">Nombre de Usuario:</label><br />
+                            <input type="text" id="username" name="username" required/><br />
+                        </div>
+                        <div>
+                            <label id="rut">RUT:</label><br />
+                            <input type="text" id="rut" name="rut" required/><br />
+                        </div>
+                        <div>
+                            <label id="email">Correo Electrónico:</label><br />
+                            <input type="email" id="email" name="email" required/><br />
+                        </div>
+                        <div>
+                            <label id="region">Región:</label><br />
+                            <select id="region" name="region" required>
+                                <option value="">Selecciona...</option>
+                            <option value="region1">Región de Arica y Parinacota</option>
+                            <option value="region2">Región de Tarapacá</option>
+                            <option value="region2">Región de Antofagasta</option>
+                            <option value="region2">Región de Atacama</option>
+                            <option value="region2">Región de Coquimbo</option>
+                            <option value="region2">Región de Valparaíso</option>
+                            <option value="region2">Región Metropolitana</option>
+                            <option value="region2">Región de O’Higgins</option>
+                            <option value="region2">Región del Maule</option>
+                            <option value="region2">Región del Ñuble</option>
+                            <option value="region2">Región del Biobío</option>
+                            <option value="region2">Región de La Araucanía</option>
+                            <option value="region2">Región de Los Ríos</option>
+                            <option value="region2">Región de Los Lagos</option>
+                            <option value="region2">Región de Aysén</option>
+                            <option value="region2">Región de Magallanes</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label id="comuna">Comuna:</label><br />
+                            <input type="text" id="comuna" name="comuna" required/><br />
+                        </div>
+                        <div>
+                            <label id="password">Contraseña:</label><br />
+                            <input type="password" id="password" name="password" required/><br />
+                        </div>
+                        <div>
+                            <label id="confirm_password">Confirmar Contraseña:</label><br />
+                            <input type="password" id="confirm_password" name="confirm_password" required/><br />
+                        </div>
+                        <div>
+                            <input type="checkbox" id="terms" name="terms" required/><br />
+                            <label id="terms">Acepto los términos y condiciones</label><br />
+                        </div>
+                        <div>
+                            <button type="submit">Registrarse</button>
+                        </div>
+                    </form>
+                </main>
             </IonContent>
             <IonFooter>
                 <div style={{ textAlign: 'center', padding: '1em' }}>

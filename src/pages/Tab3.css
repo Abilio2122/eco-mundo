@@ -148,7 +148,11 @@ header a:hover{
     text-decoration: none; 
 }
 
-
+.custom_button_ionic{ 
+    color: white;
+    text-decoration: none;
+    text-align: right;
+  }
 
  .custom_button_ionic span{ 
     color: white;

@@ -1,0 +1,44 @@
+
+/*Configuracion SECTION 4*/
+#caracteristicas .container {
+    text-align: center;
+    padding: 50px 0; /* Ajusta el padding según sea necesario */
+    height: auto; /* Cambia la altura a auto para que se ajuste automáticamente al contenido */
+    color: rgb(255, 255, 255);
+    background-image: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    )
+    , url(../MEDIA/bg1.jpg);
+}
+
+
+#Carateristicas h1{
+    font-size: 3em;
+    
+}
+
+#caracteristicas li{
+    margin: 16px 0px;
+    font-weight: bold;
+    color: rgb(255, 253, 253);
+}
+
+
+footer{
+    background-color: rgb(54, 55, 58);
+}
+
+footer p{
+    margin: 0;
+    padding: 12px;
+    color: rgb(100,100,100);
+}
+
+footer .container{
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}

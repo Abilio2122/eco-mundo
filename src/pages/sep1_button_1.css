@@ -4,7 +4,7 @@
 /* Estilos para el contenido de la noticia */
  .section_sep1{
     max-width: 800px; /*ancho de hoja <<<<<<<<<<<*/
-    margin: 20px auto;
+    margin: 20px;
     padding: 20px;
     background-color: transparent #ffffff;
     box-shadow: 0 0 10px rgba(247, 243, 243, 0.1);

@@ -17,6 +17,13 @@ import Tab3 from './pages/Tab3';
 import Tab4 from './pages/inicio_sesion';
 import Tab5 from './pages/registro';
 import Tab6 from './pages/sep1_button_1';
+import Tab7 from './pages/Sep4_Caract1';
+import Tab8 from './pages/Sep4_Caract2';
+import Tab9 from './pages/Sep4_Caract3';
+import Tab10 from './pages/Sep4_Caract4';
+import Tab11 from './pages/Sep3_Opcion1';
+import Tab12 from './pages/Sep3_Opcion2';
+import Tab13 from './pages/Sep3_Opcion3';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -76,27 +83,41 @@ const App: React.FC = () => (
           <Route path="/sep1_button_1">
             <Tab6 />
           </Route>
+          <Route path="/Sep4_Caract1">
+            <Tab7 />
+          </Route>
+          <Route path="/Sep4_Caract2">
+            <Tab8 />
+          </Route>
+          <Route path="/Sep4_Caract3">
+            <Tab9 />
+          </Route>
+          <Route path="/Sep4_Caract4">
+            <Tab10 />
+          </Route>
+          <Route path="/Sep3_Opcion1">
+            <Tab11 />
+          </Route>
+          <Route path="/Sep3_Opcion2">
+            <Tab12 />
+          </Route>
+          <Route path="/Sep3_Opcion3">
+            <Tab13 />
+          </Route>
+
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="tab1" href="/tab1">
             <IonIcon aria-hidden="true" icon={triangle} />
             <IonLabel>Tab 1</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon aria-hidden="true" icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
-          </IonTabButton>
           <IonTabButton tab="tab3" href="/tab3">
             <IonIcon aria-hidden="true" icon={square} />
             <IonLabel>Tab 3</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab4" href="/inicio_sesion">
+          <IonTabButton tab="tab2" href="/tab2">
             <IonIcon aria-hidden="true" icon={ellipse} />
-            <IonLabel>Tab 4</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="registro" href="/registro">
-            <IonIcon aria-hidden="true" icon={ellipse} />
-            <IonLabel>Tab 5</IonLabel>
+            <IonLabel>Tab 2</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
