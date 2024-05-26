@@ -33,8 +33,12 @@ const CustomHeader: React.FC = () => {
 const HeroSection: React.FC = () => {
   return (
     <section id="hero">
-      <h1>Explora y Actúa por un Futuro Sostenible</h1>
-      <button><a href="sep1_button_1.html">¡Infórmate YA!</a></button>
+      <h1>Explora y Actúa por un Futuro Sostenible</h1> 
+      <IonButton className="custom_button_ionic">
+          <IonRouterLink href="/sep1_button_1">
+            <span role="img" aria-label="Inicio de Sesión">👤 ¡Infórmate YA!</span>
+          </IonRouterLink>
+        </IonButton>
     </section>
   );
 };
