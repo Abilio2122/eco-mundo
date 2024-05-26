@@ -1,8 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './registro.css';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonInput, IonLabel, IonItem, IonList, IonSelect, IonSelectOption, IonCheckbox, IonFooter } from '@ionic/react';
+import data from '../data/cuenta.json';
 
 const Register: React.FC = () => {
+
+    const [formData, setFormData] = useState({
+        username: '',
+        rut: '',
+        email: '',
+        region: '',
+        comuna: '',
+        password: '',
+        confirm_password: ''
+    });
+
+    useEffect(() => {
+        // Cargar datos del JSON al estado del formulario
+        setFormData(data);
+    }, []);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+
     return (
         <IonPage>
             <IonHeader>
@@ -15,7 +40,18 @@ const Register: React.FC = () => {
                     <form action="#" method="post">
                         <div>
                             <label id="username">Nombre de Usuario:</label><br />
-                            <input type="text" id="username" name="username" required/><br />
+
+                            {/*aca hago que en el input del nombre de usuario muestre el json leeido del campo usuario*/}
+
+                            {/*<input type="text" id="username" name="username" required/><br />*/}
+                            <input 
+                                type="text" 
+                                id="username" 
+                                name="username" 
+                                value={formData.username} // Asigna el valor del estado formData al campo de entrada
+                                onChange={handleChange} // Proporciona la función handleChange para manejar los cambios en el campo
+                                required
+                            />
                         </div>
                         <div>
                             <label id="rut">RUT:</label><br />

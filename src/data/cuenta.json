@@ -1,0 +1,10 @@
+{
+    "username": "prueba para el json no me borres",
+    "rut": "12345678-9",
+    "email": "usuario@example.com",
+    "region": "region7",
+    "comuna": "Santiago",
+    "password": "contraseña123",
+    "confirm_password": "contraseña123"
+  }
+  
