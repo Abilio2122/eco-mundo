@@ -1,0 +1,165 @@
+
+*{
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color :rgb(255, 255, 255);
+}
+
+
+ /*Movimiento de pagina */
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+     /*Fuentes de texto*/
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+/*Tamaño de titulos*/
+h1{ font-size: 3.5em;}
+h2{ font-size: 2.7em;}
+h3{ font-size: 1.9em;}
+
+/*Tamaño de Parrafo*/
+p{ font-size: 1.25em;}
+/*Sacar puntero*/
+ul{ list-style: none;}
+/*tamaño de listas */
+li{ font-size: 1.25em;}
+ /*Personalizacion de botton*/
+ button {
+    background-color: #00ff40;
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+button{
+    background-color: #4CAF50;
+}
+/*separacion de container - amplitud de imagen */
+.container{
+    max-width: 2000px;
+    margin: auto;
+}
+/* Color de la fuente */
+.color-acento{ color:rgb(255, 255, 255);
+ }
+
+ .color-parrafo{ color:rgb(233, 233, 235);
+
+ }
+
+/*Color del cabeza de pagina*/
+header{
+    background-color: #333;
+    
+}
+/*Cofiguracion Logo */
+header .logo{
+    margin: 0;
+    padding: 25px 30px;
+    font-weight: bold;
+    color: #4CAF50;
+    font-size: 2.6em;
+}
+
+header .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header nav{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 25px;
+}
+/*Configuracion de botones cabeza de pagina*/
+header a{
+    padding: 5px 12px;
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+}
+/*Color de botones de cabeza*/
+header a:hover{
+    color: #d9f0db;
+}
+
+
+
+/*Configuracion SECTION 1*/
+#hero{
+    display: flex ;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    height: 40vh;
+   background-image: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    )
+    ,url(../MEDIA/calentamiento-global.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+/*Color de titulo*/
+#hero h1{
+    color: rgb(255, 255, 255);
+}
+
+#hero button,
+#hero button a { 
+    font-size: 1.50em;
+    background-color: #45a049;
+    color: white;
+    text-decoration: none;
+    border: 1px solid rgb(240, 224, 230); /* Agrega un borde de 1px sólido blanco al botón */
+}
+
+
+#somos-proya .container{
+
+    text-align: left;
+
+    padding: 50px 50px;
+    background-image: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    )
+    ,url(../MEDIA/bg1.jpg);
+    
+}
+
+.CustomHeader button{
+    color:white;
+    text-decoration: none; 
+}
+
+ .custom_button_ionic span{ 
+    color: white;
+    text-decoration: none;
+    text-align: right;
+  }
+
+nav a{
+    float: right; 
+}
+  
+.atajos a {
+    margin-right: 10px; 
+    line-height: 1;
+    color: rgb(151, 159, 166);
+}
