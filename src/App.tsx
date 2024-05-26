@@ -66,10 +66,10 @@ const App: React.FC = () => (
           <Route exact path="/">
             <Redirect to="/tab1" />
           </Route>
-          <Route path="/tab4">
+          <Route path="/inicio_sesion">
             <Tab4 />
           </Route>
-          <Route path="/tab5">
+          <Route path="/registro">
             <Tab5 />
           </Route>
         </IonRouterOutlet>
@@ -86,11 +86,11 @@ const App: React.FC = () => (
             <IonIcon aria-hidden="true" icon={square} />
             <IonLabel>Tab 3</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab4" href="/tab4">
+          <IonTabButton tab="tab4" href="/inicio_sesion">
             <IonIcon aria-hidden="true" icon={ellipse} />
             <IonLabel>Tab 4</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab5" href="/tab5">
+          <IonTabButton tab="registro" href="/registro">
             <IonIcon aria-hidden="true" icon={ellipse} />
             <IonLabel>Tab 5</IonLabel>
           </IonTabButton>
