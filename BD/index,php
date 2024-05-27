@@ -1,0 +1,70 @@
+<?php
+$servidor= "localhost";
+$usuario= "localhost";
+$clave= "";
+$BD= "eco_mundo";
+$enlace= mysqli_connect($servidor, $usuario, $clave, $BD);
+?>
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Formulario</title>
+    </head>
+    <body>
+
+    <form action="#" name="ejemplo" method="post">
+
+    <input type="text" name="nombre" placeholder="nombre">
+    <input type="int" name="rut" placeholder="rut">
+    <input type="email" name="correo" placeholder="correo">
+    <select type="text" name="region" placeholder="region">
+                <option value="">Selecciona...</option>
+                <option value="region1">Región de Arica y Parinacota</option>
+                <option value="region2">Región de Tarapacá</option>
+                <option value="region2">Región de Antofagasta</option>
+                <option value="region2">Región de Atacama</option>
+                <option value="region2">Región de Coquimbo</option>
+                <option value="region2">Región de Valparaíso</option>
+                <option value="region2">Región Metropolitana</option>
+                <option value="region2">Región de O’Higgins</option>
+                <option value="region2">Región del Maule</option>
+                <option value="region2">Región del Ñuble</option>
+                <option value="region2">Región del Biobío</option>
+                <option value="region2">Región de La Araucanía</option>
+                <option value="region2">Región de Los Ríos</option>
+                <option value="region2">Región de Los Lagos</option>
+                <option value="region2">Región de Aysén</option>
+                <option value="region2">Región de Magallanes</option>
+        </select>
+    <input type="text" name="comunas" placeholder="comunas">
+    <input type="password" name="password" placeholder="password">
+    <input type="password" name="confirm_password" placeholder="confirm_password">
+
+    <input type="submit" name="registro">
+    <input tupe="reset">
+
+    </form>
+
+</body>
+
+</html>
+
+<?php
+    if(isset($_POST['resgistro'])){ 
+        $nombre= $_POST['nombre']; 
+        $rut= $_POST['rut']; 
+        $correo= $_POST['correo']; 
+        $region= $_POST['region'];
+        $comuna= $_POST['comuna']; 
+        
+        
+        $insertaDatos = "INSERT INTO datos VALUES('$nombre','$rut','$correo','$region','$comuna','')";
+            
+        $ejecutarInsertar = mysqli_query ($enlase, $insertaDatos);
+
+    }
+   
+?>
