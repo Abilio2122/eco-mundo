@@ -1,29 +1,66 @@
-/*Tamaño de titulos*/
-h1{ font-size: 3.5em;}
-h2{ font-size: 2.7em;}
-h3{ font-size: 1.9em;}
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
-/*Tamaño de Parrafo*/
-p{ font-size: 1.50em;}
-/*Sacar puntero*/
-ul{ font-size: 1.50em;}
-/*tamaño de listas */
-li{ font-size: 1.25em;}
+/* Tamaño de títulos */
+h1 { 
+    font-size: 3.5em; 
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff; /* Cambiar el color a blanco */
+}
 
-a{font-size: 2em;}
+h2 { 
+    font-size: 2.7em; 
+    margin-top: 30px; 
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff; /* Cambiar el color a blanco */
+}
+
+h3 { 
+    font-size: 1.9em; 
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff; /* Cambiar el color a blanco */
+}
+
+/* Tamaño de párrafo */
+p { 
+    font-size: 1.50em; 
+    margin-bottom: 20px; 
+    font-family: 'Open Sans', sans-serif;
+    color: #f0f0f0; /* Cambiar el color a un gris claro */
+}
+
+/* Sacar puntero */
+ul { 
+    font-size: 1.50em; 
+    font-family: 'Open Sans', sans-serif;
+    color: #f0f0f0; /* Cambiar el color a un gris claro */
+}
+
+/* Tamaño de listas */
+li { 
+    font-size: 1.25em; 
+    font-family: 'Open Sans', sans-serif;
+    color: #f0f0f0; /* Cambiar el color a un gris claro */
+}
+
+a { 
+    font-size: 2em; 
+    font-family: 'Open Sans', sans-serif;
+    color: #f0f0f0; /* Cambiar el color a un gris claro */
+}
 
 /* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
     background-image: linear-gradient(
         0deg,
         rgba(0, 0, 0, 0.5),
         rgba(0, 0, 0, 0.5)
-    )
-    ,url(../MEDIA/bg1.jpg);
-    
+    ), url(../MEDIA/bg1.jpg);
 }
 
 /* Estilos para el encabezado */
@@ -33,6 +70,7 @@ header {
     padding: 5px 0;
     text-align: center;
 }
+
 button {
     background-color: #00ff40;
     color: rgb(255, 255, 255);
@@ -41,46 +79,55 @@ button {
     margin: 10px;
 }
 
-
-button{
+button {
     background-color: #4CAF50;
 }
 
 a {
     color: #fff;
-    text-decoration: center;
+    text-decoration: none;
     margin: 0 10px;
-  }
+}
 
 /* Estilos para las secciones */
 section {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente para mejorar la legibilidad */
+    background-image: url('../MEDIA/Sep4_Caract1_Fondo.jpg'); /* Nueva imagen de fondo */
+    background-size: cover;
+    background-repeat: no-repeat;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Estilos para los subtítulos específicos */
+h2.merriweather, h3.merriweather {
+    font-family: 'Merriweather', serif;
+    color: #000000; /* Subtítulos en negro */
+}
+
 /* Estilos para las imágenes */
-img {
-    max-width: 100%;
+.content-image {
+    max-width: 50%;
     height: auto;
     display: block;
     margin: 20px auto;
 }
 
 /* Estilos para el pie de página */
-footer{
+footer {
     background-color: rgb(54, 55, 58);
 }
 
-footer p{
+footer p {
     margin: 0;
     padding: 12px;
-    color: rgb(100,100,100);
+    color: rgb(100, 100, 100);
+    font-family: 'Open Sans', sans-serif;
 }
 
-footer .container{
+footer .container {
     height: 80px;
     display: flex;
     justify-content: center;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { IonPage, IonContent, IonHeader, IonToolbar, IonTitle, IonButton, IonRouterLink } from '@ionic/react';
 import './Tab2.css';
+import background from '../MEDIA/Tab2_Fondo.jpg'; // Asegúrate de que la ruta sea correcta
 
 const NuestrosProgramas: React.FC = () => {
   return (
@@ -10,7 +11,7 @@ const NuestrosProgramas: React.FC = () => {
           <IonTitle>Nuestros Programas</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
         <section id="nuestros-programas">
           <div className="container">
             <h2>Descubre e Infórmate Con Nosotros</h2>

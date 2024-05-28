@@ -1,5 +1,4 @@
-
-/*Configuracion SECTION 4*/
+/* Configuración SECTION 4 */
 #caracteristicas .container {
     text-align: center;
     padding: 50px 0; /* Ajusta el padding según sea necesario */
@@ -9,34 +8,55 @@
         0deg,
         rgba(0, 0, 0, 0.5),
         rgba(0, 0, 0, 0.5)
-    )
-    , url(../MEDIA/bg1.jpg);
+    ), url(../MEDIA/bg1.jpg);
+    font-family: 'Roboto', sans-serif; /* Añade la fuente Roboto */
 }
 
-
-#Carateristicas h1{
+/* Asegurarte de que el título esté en blanco */
+#caracteristicas h1 {
     font-size: 3em;
-    
+    color: white; /* Asegura que el color del título sea blanco */
+    font-family: 'Merriweather', serif; /* Añade la fuente Merriweather */
+    font-weight: 700; /* Añade negrita para los títulos */
 }
 
-#caracteristicas li{
+/* Asegurarte de que los elementos de lista estén en blanco */
+#caracteristicas li {
     margin: 16px 0px;
-    font-weight: bold;
-    color: rgb(255, 253, 253);
+    font-weight: 600; /* Peso medio para subtítulos */
+    color: white; /* Asegura que el color de los elementos de lista sea blanco */
+    font-family: 'Merriweather', serif; /* Añade la fuente Merriweather para subtítulos */
+    font-size: 1.2em; /* Tamaño más pequeño para los subtítulos */
+    margin-bottom: 10px; /* Aumenta el espacio debajo de los subtítulos */
 }
 
+/* Asegurarte de que los párrafos dentro de la sección estén en blanco */
+#caracteristicas p {
+    color: white; /* Asegura que el color de los párrafos sea blanco */
+    font-size: 1em; /* Ajusta el tamaño del texto para los párrafos */
+    font-family: 'Open Sans', sans-serif; /* Añade la fuente Open Sans */
+    max-width: 600px; /* Limita el ancho máximo del texto */
+    margin: 20px auto; /* Centra el texto y añade espacio encima y debajo de los párrafos */
+}
 
-footer{
+/* Estilos para los botones */
+#caracteristicas .btn-informate {
+    margin-top: 10px; /* Añade espacio encima del botón */
+    margin-bottom: 20px; /* Añade espacio debajo del botón */
+}
+
+/* Estilos para el footer */
+footer {
     background-color: rgb(54, 55, 58);
 }
 
-footer p{
+footer p {
     margin: 0;
     padding: 12px;
-    color: rgb(100,100,100);
+    color: rgb(100, 100, 100);
 }
 
-footer .container{
+footer .container {
     height: 80px;
     display: flex;
     justify-content: center;
