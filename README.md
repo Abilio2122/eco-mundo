@@ -40,7 +40,7 @@ INSERT INTO `datos` (`nombre`, `rut`, `correo`, `region`, `comuna`, `contraseña
 
 VALUES ('', NULL, '', '', '', '', '')
 
-Modelo de datos: ![alt text](image.png)
+Modelo de datos: ![alt text](image-1.png)
 
 
 EP2.4 Hacer uso de al menos dos (2) patrones de diseño, ya sea web o móvil, en la implementación de las pantallas, teniendo como foco principal el uso desde un dispositivo móvil.
@@ -48,13 +48,13 @@ EP2.4 Hacer uso de al menos dos (2) patrones de diseño, ya sea web o móvil, en
 Hacemos uso en este proyecto de varios patrones de diseño a continuación mencionaremos algunas:
 
 ●	Uso de etiquetas: en páginas como mostramos en la siguiente imagen aplicamos este patrón con el objetivo de adaptar a diferentes tamaños de pantalla debido a su alta flexibilidad a distintos tamaños pensando en tamaños de distintos dispositivos móviles.
-![alt text](image-3.png)
+![alt text](image-4.png)
 
 ●	Botón de inicio: Insertamos botones de inicio en varias páginas para poder devolverse de la página anterior a la ingresada para mayor comodidad de navegación. Pensamos en dispositivos móviles en las que no tengan implementado cómodamente botones de retroceso facilitandoles la navegación en nuestra página web 
-![alt text](image-2.png)
+![alt text](image-3.png)
 
 ●	La barra de navegación fija en la parte inferior: Usamos este patrón en el que servirá a los usuarios especialmente a los que tengan dispositivos móviles para poder manejarse de forma rápida y cómoda a puntos principales de nuestra página. se mantiene en la parte inferior para mayor comodidad de pulgar mientras se sostiene el dispositivo móvil
-![alt text](image-1.png)
+![alt text](image-2.png)
 
 •	Texto de acceso rapido: Incluimos texto en la que da atajos a tematicas principales que ofrece nuestra pagina pensando en personas que no se familiarizan con la navegacion en web dando mas alternativas a todos los usuarios.
 
