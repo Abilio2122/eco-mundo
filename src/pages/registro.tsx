@@ -104,12 +104,7 @@ const Register: React.FC = () => {
                         </div>
                     </form>
                 </main>
-            </IonContent>
-            <IonFooter>
-                <div style={{ textAlign: 'center', padding: '1em' }}>
-                    <p>&copy; Etiqueta 2023</p>
-                </div>
-            </IonFooter>
+            </IonContent> 
         </IonPage>
     );
 }
