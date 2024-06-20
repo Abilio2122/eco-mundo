@@ -42,7 +42,6 @@ app.post('/registro', (req, res) => {
             return;
         }
         console.log('Datos insertados:', result);
-        res.send('Información registrada correctamente');
         res.json(data); // Envía los datos de vuelta al frontend
     });
 });

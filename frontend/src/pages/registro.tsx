@@ -3,7 +3,7 @@ import './registro.css';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 
 const Register: React.FC = () => {
-    const [formData, setFormData] = useState({
+    const initialFormData = {
         username: '',
         rut: '',
         email: '',
@@ -11,9 +11,9 @@ const Register: React.FC = () => {
         comuna: '',
         password: '',
         confirm_password: ''
-    });
+    };
 
-    // Define el estado para almacenar el mensaje de respuesta
+    const [formData, setFormData] = useState(initialFormData);
     const [responseMessage, setResponseMessage] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -34,11 +34,13 @@ const Register: React.FC = () => {
                 },
                 body: JSON.stringify(formData), // Convierte el estado del formulario a JSON
             });
-            const result = await response.text(); // Lee el texto de la respuesta
-            console.log(result); // Muestra el mensaje de confirmación en la consola
+            const result = await response.json(); // Lee la respuesta JSON
+            console.log(result); // Muestra los datos en la consola del navegador
             setResponseMessage(`Datos registrados: ${JSON.stringify(result)}`); // Muestra los datos en el frontend
+            setFormData(initialFormData); // Restablece el formulario a sus valores iniciales
         } catch (error) {
             console.error('Error al enviar los datos:', error);
+            setResponseMessage('Error al registrar los datos');
         }
     };
 
@@ -79,7 +81,7 @@ const Register: React.FC = () => {
                             <input 
                                 type="email" 
                                 id="email" 
-                                name="email" 
+                                name="email"
                                 value={formData.email}
                                 onChange={handleChange}
                                 required
