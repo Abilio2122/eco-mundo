@@ -13,6 +13,9 @@ const Register: React.FC = () => {
         confirm_password: ''
     });
 
+    // Define el estado para almacenar el mensaje de respuesta
+    const [responseMessage, setResponseMessage] = useState('');
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData({
@@ -24,15 +27,16 @@ const Register: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await fetch('https://tuapi.com/register', {
+            const response = await fetch('http://localhost:3000/registro', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData)  // Convierte el estado del formulario a JSON y lo envía al backend
+                body: JSON.stringify(formData), // Convierte el estado del formulario a JSON
             });
-            const result = await response.json();
-            console.log(result);
+            const result = await response.text(); // Lee el texto de la respuesta
+            console.log(result); // Muestra el mensaje de confirmación en la consola
+            setResponseMessage(`Datos registrados: ${JSON.stringify(result)}`); // Muestra los datos en el frontend
         } catch (error) {
             console.error('Error al enviar los datos:', error);
         }
@@ -151,6 +155,7 @@ const Register: React.FC = () => {
                             <button type="submit">Registrarse</button>
                         </div>
                     </form>
+                    {responseMessage && <p>{responseMessage}</p>} {/* Muestra el mensaje de respuesta */}
                 </main>
             </IonContent>
         </IonPage>
