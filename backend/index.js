@@ -46,6 +46,37 @@ app.post('/registro', (req, res) => {
     });
 });
 
+app.post('/login', (req, res) => {
+    const { rut, password } = req.body;
+
+    console.log('Datos recibidos para inicio de sesión:', { rut, password });
+
+    const query = 'SELECT * FROM datos WHERE rut = ?';
+    db.query(query, [rut], (err, results) => {
+        if (err) {
+            console.error('Error al verificar los datos:', err);
+            res.status(500).send('Error al iniciar sesión');
+            return;
+        }
+
+        console.log('Resultados de la consulta:', results);
+
+        if (results.length > 0) {
+            const user = results[0];
+            console.log('Usuario encontrado:', user);
+            if (user.contraseña === password) {
+                res.json({ success: true, message: 'Inicio de sesión exitoso' });
+            } else {
+                console.log('Contraseña incorrecta');
+                res.status(401).json({ success: false, message: 'Contraseña incorrecta' });
+            }
+        } else {
+            console.log('Usuario no encontrado');
+            res.status(401).json({ success: false, message: 'Usuario no encontrado' });
+        }
+    });
+});
+
 // Iniciar el servidor
 const port = process.env.PORT || 3000; // Utiliza el puerto definido por el entorno o el 3000 por defecto
 app.listen(port, () => {
