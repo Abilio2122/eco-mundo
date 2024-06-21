@@ -1,6 +1,6 @@
 import React from 'react';
 import { IonPage, IonContent , IonButton, IonRouterLink} from '@ionic/react';
-import './Tab1.css';
+import './caracteristicas.css';
 
 const Caracteristicas: React.FC = () => {
   return (

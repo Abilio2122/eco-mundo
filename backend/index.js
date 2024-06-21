@@ -12,6 +12,9 @@ app.use(bodyParser.json());
 // Configuración de CORS para permitir todas las solicitudes desde cualquier origen (*)
 app.use(cors());
 
+// Configuración para servir archivos estáticos
+app.use('/images', express.static('public/images'));
+
 // Configuración de la conexión a la base de datos
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -76,6 +79,34 @@ app.post('/login', (req, res) => {
         }
     });
 });
+
+app.get('/noticias_climaticas', (req, res) => {
+    const query = 'SELECT * FROM noticias_climaticas';
+    db.query(query, (err, results) => {
+        if (err) {
+            console.error('Error al obtener los datos:', err);
+            res.status(500).send('Error al obtener los datos');
+            return;
+        }
+        res.json(results);
+    });
+});
+
+app.put('/noticias_climaticas/:id', (req, res) => {
+    const { id } = req.params;
+    const { title, section_title, content, image_url } = req.body;
+    
+    const query = 'UPDATE noticias_climaticas SET title = ?, section_title = ?, content = ?, image_url = ? WHERE id = ?';
+    db.query(query, [title, section_title, content, image_url, id], (err, result) => {
+        if (err) {
+            console.error('Error al actualizar los datos:', err);
+            res.status(500).send('Error al actualizar los datos');
+            return;
+        }
+        res.json({ success: true, message: 'Datos actualizados exitosamente' });
+    });
+});
+
 
 // Iniciar el servidor
 const port = process.env.PORT || 3000; // Utiliza el puerto definido por el entorno o el 3000 por defecto

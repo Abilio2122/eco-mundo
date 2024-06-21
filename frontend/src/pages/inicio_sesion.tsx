@@ -18,7 +18,7 @@ const Login: React.FC = () => {
         setToastMessage('Inicio de sesión exitoso');
         setShowToast(true);
         // Redirige a la página deseada después del login
-        window.location.href = '/Tab3';
+        window.location.href = '/edit_bd';
       } else {
         setToastMessage(response.data.message);
         setShowToast(true);

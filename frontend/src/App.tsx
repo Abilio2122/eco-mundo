@@ -24,6 +24,8 @@ import Tab10 from './pages/Sep4_Caract4';
 import Tab11 from './pages/Sep3_Opcion1';
 import Tab12 from './pages/Sep3_Opcion2';
 import Tab13 from './pages/Sep3_Opcion3';
+import EditarNoticiasClimaticas from './pages/edit_bd';
+
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -103,6 +105,9 @@ const App: React.FC = () => (
           </Route>
           <Route path="/Sep3_Opcion3">
             <Tab13 />
+          </Route>
+          <Route path="/edit_bd">
+            <EditarNoticiasClimaticas />
           </Route>
 
         </IonRouterOutlet>
