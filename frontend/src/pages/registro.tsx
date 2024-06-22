@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonToast } from '@ionic/react';
+import { useHistory } from 'react-router-dom';
 import './registro.css';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 
 const Register: React.FC = () => {
     const initialFormData = {
@@ -15,6 +16,8 @@ const Register: React.FC = () => {
 
     const [formData, setFormData] = useState(initialFormData);
     const [responseMessage, setResponseMessage] = useState('');
+    const [showToast, setShowToast] = useState(false);
+    const history = useHistory();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -32,15 +35,23 @@ const Register: React.FC = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData), // Convierte el estado del formulario a JSON
+                body: JSON.stringify(formData),
             });
-            const result = await response.json(); // Lee la respuesta JSON
-            console.log(result); // Muestra los datos en la consola del navegador
-            setResponseMessage(`Datos registrados: ${JSON.stringify(result)}`); // Muestra los datos en el frontend
+            const result = await response.json();
+            console.log(result);
+            setResponseMessage(result.message); // Usa solo el mensaje del backend
+            setShowToast(true); // Mostrar el toast
+
+            // Redirigir a la página inicial después de un breve retraso
+            setTimeout(() => {
+                history.push('/');
+            }, 2000); // Ajusta el tiempo según sea necesario
+
             setFormData(initialFormData); // Restablece el formulario a sus valores iniciales
         } catch (error) {
             console.error('Error al enviar los datos:', error);
             setResponseMessage('Error al registrar los datos');
+            setShowToast(true); // Mostrar el toast en caso de error también
         }
     };
 
@@ -157,8 +168,13 @@ const Register: React.FC = () => {
                             <button type="submit">Registrarse</button>
                         </div>
                     </form>
-                    {responseMessage && <p>{responseMessage}</p>} {/* Muestra el mensaje de respuesta */}
                 </main>
+                <IonToast
+                    isOpen={showToast}
+                    onDidDismiss={() => setShowToast(false)}
+                    message={responseMessage} // Muestra solo el mensaje
+                    duration={2000}
+                />
             </IonContent>
         </IonPage>
     );

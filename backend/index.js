@@ -45,7 +45,7 @@ app.post('/registro', (req, res) => {
             return;
         }
         console.log('Datos insertados:', result);
-        res.json(data); // Envía los datos de vuelta al frontend
+        res.json({ message: 'Registro correcto' }); // Envía un mensaje conciso de vuelta al frontend
     });
 });
 

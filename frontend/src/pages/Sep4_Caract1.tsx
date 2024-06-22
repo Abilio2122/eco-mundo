@@ -16,7 +16,11 @@ const NoticiasClimaticasGlobales: React.FC = () => {
     const fetchNoticias = async () => {
       try {
         const response = await axios.get('http://localhost:3000/noticias_climaticas');
-        setNoticias(response.data);
+        const noticiasData = response.data;
+        noticiasData.forEach((noticia: any) => {
+          console.log('URL de la imagen:', noticia.image_url);
+        });
+        setNoticias(noticiasData);
         setLoading(false);
       } catch (err) {
         console.error('Error al obtener noticias:', err);
@@ -26,7 +30,6 @@ const NoticiasClimaticasGlobales: React.FC = () => {
     };
     fetchNoticias();
   }, []);
-
 
   if (loading) {
     return <p>Cargando...</p>;
@@ -84,7 +87,7 @@ const NoticiasClimaticasGlobales: React.FC = () => {
             <div key={noticia.id}>
               <h2 className="merriweather">{noticia.section_title}</h2>
               <p>{noticia.content}</p>
-              {noticia.image_url && <img src={noticia.image_url} alt={noticia.section_title} className="content-image" />}
+              {noticia.image_url && <img src={`http://localhost:3000${noticia.image_url}`} alt={noticia.section_title} className="content-image" />}
             </div>
           ))}
         </section>
