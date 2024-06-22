@@ -1,0 +1,37 @@
+.user-home-page .page-content {
+    color: #ffffff;
+    background-color: #1e1e1e;
+    text-align: center;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .user-home-page .page-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .user-home-page .page-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .user-home-page .page-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    max-width: 600px;
+  }
+  
+  .user-home-page .page-footer {
+    margin-top: auto;
+    font-size: 0.8rem;
+  }
+  

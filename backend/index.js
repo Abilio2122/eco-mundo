@@ -68,7 +68,7 @@ app.post('/login', (req, res) => {
             const user = results[0];
             console.log('Usuario encontrado:', user);
             if (user.contraseña === password) {
-                res.json({ success: true, message: 'Inicio de sesión exitoso' });
+                res.json({ success: true, message: 'Inicio de sesión exitoso', tipo: user.tipo });
             } else {
                 console.log('Contraseña incorrecta');
                 res.status(401).json({ success: false, message: 'Contraseña incorrecta' });

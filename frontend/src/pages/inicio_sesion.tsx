@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonRouterLink, IonToast } from '@ionic/react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 import "./Inicio_sesion.css";
 
 const Login: React.FC = () => {
@@ -8,6 +9,7 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('');
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
+  const history = useHistory();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,8 +19,12 @@ const Login: React.FC = () => {
       if (response.data.success) {
         setToastMessage('Inicio de sesión exitoso');
         setShowToast(true);
-        // Redirige a la página deseada después del login
-        window.location.href = '/edit_bd';
+        // Redirige según el tipo de usuario
+        if (response.data.tipo === 'admin') {
+          history.push('/edit_bd');
+        } else {
+          history.push('/UserHomePage');
+        }
       } else {
         setToastMessage(response.data.message);
         setShowToast(true);
