@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import './registro.css';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonToast } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
-import './registro.css';
 
 const Register: React.FC = () => {
     const initialFormData = {
@@ -19,6 +19,16 @@ const Register: React.FC = () => {
     const [showToast, setShowToast] = useState(false);
     const history = useHistory();
 
+    const validateRut = (rut: string) => {
+        const rutRegex = /^[1-9]\d{7}$/;  // Acepta solo números del 1 al 9, longitud exacta de 8 dígitos
+        return rutRegex.test(rut);
+    };
+
+    const validateEmail = (email: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData({
@@ -29,29 +39,46 @@ const Register: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (!validateRut(formData.rut)) {
+            setResponseMessage('El RUT no tiene un formato válido');
+            setShowToast(true);
+            return;
+        }
+        if (!validateEmail(formData.email)) {
+            setResponseMessage('El correo electrónico no tiene un formato válido');
+            setShowToast(true);
+            return;
+        }
+        if (formData.password !== formData.confirm_password) {
+            setResponseMessage('Las contraseñas no coinciden');
+            setShowToast(true);
+            return;
+        }
         try {
             const response = await fetch('http://localhost:3000/registro', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({
+                    username: formData.username,
+                    rut: formData.rut,
+                    email: formData.email,
+                    region: formData.region,
+                    comuna: formData.comuna,
+                    password: formData.password
+                }), // Solo enviamos la contraseña, no la confirmación
             });
-            const result = await response.json();
-            console.log(result);
-            setResponseMessage(result.message); // Usa solo el mensaje del backend
-            setShowToast(true); // Mostrar el toast
-
-            // Redirigir a la página inicial después de un breve retraso
-            setTimeout(() => {
-                history.push('/');
-            }, 2000); // Ajusta el tiempo según sea necesario
-
+            const result = await response.json(); // Lee la respuesta JSON
+            console.log(result); // Muestra los datos en la consola del navegador
+            setResponseMessage('Registro correcto'); // Muestra un mensaje conciso en el frontend
+            setShowToast(true);
             setFormData(initialFormData); // Restablece el formulario a sus valores iniciales
-        } catch (error) {
+            history.push('/Tab3'); // Redirige a la página de inicio
+        } catch (error) {       
             console.error('Error al enviar los datos:', error);
             setResponseMessage('Error al registrar los datos');
-            setShowToast(true); // Mostrar el toast en caso de error también
+            setShowToast(true);
         }
     };
 
@@ -172,7 +199,7 @@ const Register: React.FC = () => {
                 <IonToast
                     isOpen={showToast}
                     onDidDismiss={() => setShowToast(false)}
-                    message={responseMessage} // Muestra solo el mensaje
+                    message={responseMessage}
                     duration={2000}
                 />
             </IonContent>
