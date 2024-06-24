@@ -135,18 +135,18 @@ const Register: React.FC = () => {
                                 required
                             >
                                 <option value="">Selecciona...</option>
-                                <option value="region1">Región de Arica y Parinacota</option>
-                                <option value="region2">Región de Tarapacá</option>
-                                <option value="region3">Región Metropolitana</option>
-                                <option value="region4">Región de O'Higgins</option>
-                                <option value="region5">Región del Maule</option>
-                                <option value="region6">Región del Ñuble</option>
-                                <option value="region7">Región del Biobío</option>
-                                <option value="region8">Región de La Araucanía</option>
-                                <option value="region9">Región de Los Ríos</option>
-                                <option value="region10">Región de Los Lagos</option>
-                                <option value="region11">Región de Aysén</option>
-                                <option value="region12">Región de Magallanes</option>
+                                <option value="Región de Arica y Parinacota">Región de Arica y Parinacota</option>
+                                <option value="Región de Tarapacá">Región de Tarapacá</option>
+                                <option value="Región Metropolitana">Región Metropolitana</option>
+                                <option value="Región de O'Higgins">Región de O'Higgins</option>
+                                <option value="Región del Maule">Región del Maule</option>
+                                <option value="Región del Ñuble">Región del Ñuble</option>
+                                <option value="Región del Biobío">Región del Biobío</option>
+                                <option value="Región de La Araucanía">Región de La Araucanía</option>
+                                <option value="Región de Los Ríos">Región de Los Ríos</option>
+                                <option value="Región de Los Lagos">Región de Los Lagos</option>
+                                <option value="Región de Aysén">Región de Aysén</option>
+                                <option value="Región de Magallanes">Región de Magallanes</option>
                             </select>
                         </div>
                         <div>
