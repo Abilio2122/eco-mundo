@@ -37,13 +37,13 @@ const Login: React.FC = () => {
   };
 
   return (
-    <IonPage>
+    <IonPage className="login-page">
       <IonHeader>
         <IonToolbar>
           <IonTitle>Iniciar Sesión</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent className='login' fullscreen>
         <header>
           <h1>¡Bienvenido!</h1>
           <p>Por favor, inicia sesión para continuar.</p>

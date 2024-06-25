@@ -89,7 +89,7 @@ const Register: React.FC = () => {
                     <IonTitle>Registro de Usuario</IonTitle>
                 </IonToolbar>
             </IonHeader>
-            <IonContent>
+            <IonContent className='registro'>
                 <main>
                     <form onSubmit={handleSubmit}>
                         <div>

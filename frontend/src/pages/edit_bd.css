@@ -1,0 +1,52 @@
+.editar-noticias-page {
+    --background: url('../MEDIA/Sep4_Caract1_img3.jpg') no-repeat center center !important;
+    --background-size: cover;
+    color: white;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .editar-noticias-content {
+    background: rgba(0, 0, 0, 0.5); /* Adding a semi-transparent background to make text readable */
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .editar-noticias-content h2,
+  .editar-noticias-content p,
+  .editar-noticias-content input,
+  .editar-noticias-content textarea {
+    color: white;
+  }
+  
+  .editar-noticias-content input,
+  .editar-noticias-content textarea {
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    border: 1px solid white;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  
+  .editar-noticias-content input:focus,
+  .editar-noticias-content textarea:focus {
+    outline: none;
+    border-color: #4CAF50;
+  }
+  
+  .editar-noticias-content button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .editar-noticias-content button:hover {
+    background-color: #45a049;
+  }
+  

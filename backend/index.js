@@ -107,6 +107,21 @@ app.put('/noticias_climaticas/:id', (req, res) => {
     });
 });
 
+// Ruta para manejar la eliminación de un usuario por RUT
+app.delete('/usuarios/:rut', (req, res) => {
+    const { rut } = req.params;
+    
+    const query = 'DELETE FROM datos WHERE rut = ?';
+    db.query(query, [rut], (err, result) => {
+        if (err) {
+            console.error('Error al eliminar el usuario:', err);
+            res.status(500).send('Error al eliminar el usuario');
+            return;
+        }
+        res.json({ success: true, message: 'Usuario eliminado exitosamente' });
+    });
+});
+
 
 // Iniciar el servidor
 const port = process.env.PORT || 3000; // Utiliza el puerto definido por el entorno o el 3000 por defecto
