@@ -86,11 +86,11 @@ const EditarNoticiasClimaticas: React.FC = () => {
         )}
         <IonItem>
           <IonLabel position="stacked">RUT del Usuario a Eliminar</IonLabel>
-          <IonInput
+          <IonInput 
             value={rutToDelete}
             onIonChange={e => setRutToDelete(e.detail.value!)}
             placeholder="Ingrese el RUT"
-            className="editar-noticias-input"
+            className="eliminarInput"
           />
           <IonButton onClick={handleDelete} color="danger">Eliminar Usuario</IonButton>
         </IonItem>
