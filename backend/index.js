@@ -2,10 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql2');
-const rateLimit = require('express-rate-limit'); // Importa express-rate-limit
+const rateLimit = require('express-rate-limit');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 const app = express();
+const saltRounds = 10;
 
 // Middleware para procesar JSON
 app.use(bodyParser.json());
@@ -49,16 +51,16 @@ app.post('/registro', async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, saltRounds);
         console.log('Hashed password:', hashedPassword); // Verifica el hash
 
-    const query = 'INSERT INTO datos (nombre, rut, correo, region, comuna, contraseña) VALUES (?, ?, ?, ?, ?, ?)';
+        const query = 'INSERT INTO datos (nombre, rut, correo, region, comuna, contraseña) VALUES (?, ?, ?, ?, ?, ?)';
         db.query(query, [username, rut, email, region, comuna, hashedPassword], (err, result) => {
-        if (err) {
-            console.error('Error al insertar datos:', err);
-            res.status(500).send('Error al registrar los datos');
-            return;
-        }
-        console.log('Datos insertados:', result);
+            if (err) {
+                console.error('Error al insertar datos:', err);
+                res.status(500).send('Error al registrar los datos');
+                return;
+            }
+            console.log('Datos insertados:', result);
         res.json({ message: 'Registro correcto' }); // Envía un mensaje conciso de vuelta al frontend
-    });
+        });
     } catch (err) {
         console.error('Error al encriptar la contraseña:', err);
         res.status(500).send('Error al registrar los datos');
@@ -87,10 +89,10 @@ app.post('/login', loginLimiter, (req, res) => {
             try {
                 const match = await bcrypt.compare(password, user.contraseña);
                 if (match) {
-                res.json({ success: true, message: 'Inicio de sesión exitoso', tipo: user.tipo });
-            } else {
+                    res.json({ success: true, message: 'Inicio de sesión exitoso', tipo: user.tipo });
+                } else {
                     console.log('Comparación de hash fallida');
-                res.status(401).json({ success: false, message: 'Contraseña incorrecta' });
+                    res.status(401).json({ success: false, message: 'Contraseña incorrecta' });
                 }
             } catch (compareError) {
                 console.error('Error al comparar las contraseñas:', compareError);
@@ -118,7 +120,7 @@ app.get('/noticias_climaticas', (req, res) => {
 app.put('/noticias_climaticas/:id', (req, res) => {
     const { id } = req.params;
     const { title, section_title, content, image_url } = req.body;
-    
+
     const query = 'UPDATE noticias_climaticas SET title = ?, section_title = ?, content = ?, image_url = ? WHERE id = ?';
     db.query(query, [title, section_title, content, image_url, id], (err, result) => {
         if (err) {
@@ -133,7 +135,7 @@ app.put('/noticias_climaticas/:id', (req, res) => {
 // Ruta para manejar la eliminación de un usuario por RUT
 app.delete('/usuarios/:rut', (req, res) => {
     const { rut } = req.params;
-    
+
     const query = 'DELETE FROM datos WHERE rut = ?';
     db.query(query, [rut], (err, result) => {
         if (err) {
