@@ -41,13 +41,16 @@ const loginLimiter = rateLimit({
 });
 
 // Ruta para manejar la solicitud POST desde el frontend
-app.post('/registro', (req, res) => {
-    const data = req.body; // Obtiene los datos del cuerpo de la solicitud
+app.post('/registro', async (req, res) => {
+    const data = req.body;
     const { username, rut, email, region, comuna, password } = data;
 
-    // Inserta los datos en la base de datos
+    try {
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        console.log('Hashed password:', hashedPassword); // Verifica el hash
+
     const query = 'INSERT INTO datos (nombre, rut, correo, region, comuna, contraseña) VALUES (?, ?, ?, ?, ?, ?)';
-    db.query(query, [username, rut, email, region, comuna, password], (err, result) => {
+        db.query(query, [username, rut, email, region, comuna, hashedPassword], (err, result) => {
         if (err) {
             console.error('Error al insertar datos:', err);
             res.status(500).send('Error al registrar los datos');
@@ -56,6 +59,10 @@ app.post('/registro', (req, res) => {
         console.log('Datos insertados:', result);
         res.json({ message: 'Registro correcto' }); // Envía un mensaje conciso de vuelta al frontend
     });
+    } catch (err) {
+        console.error('Error al encriptar la contraseña:', err);
+        res.status(500).send('Error al registrar los datos');
+    }
 });
 
 // Aplica el limitador a la ruta de inicio de sesión
@@ -65,7 +72,7 @@ app.post('/login', loginLimiter, (req, res) => {
     console.log('Datos recibidos para inicio de sesión:', { rut, password });
 
     const query = 'SELECT * FROM datos WHERE rut = ?';
-    db.query(query, [rut], (err, results) => {
+    db.query(query, [rut], async (err, results) => {
         if (err) {
             console.error('Error al verificar los datos:', err);
             res.status(500).send('Error al iniciar sesión');
@@ -76,12 +83,18 @@ app.post('/login', loginLimiter, (req, res) => {
 
         if (results.length > 0) {
             const user = results[0];
-            console.log('Usuario encontrado:', user);
-            if (user.contraseña === password) {
+            console.log('Contraseña almacenada:', user.contraseña); // Imprime la contraseña almacenada
+            try {
+                const match = await bcrypt.compare(password, user.contraseña);
+                if (match) {
                 res.json({ success: true, message: 'Inicio de sesión exitoso', tipo: user.tipo });
             } else {
-                console.log('Contraseña incorrecta');
+                    console.log('Comparación de hash fallida');
                 res.status(401).json({ success: false, message: 'Contraseña incorrecta' });
+                }
+            } catch (compareError) {
+                console.error('Error al comparar las contraseñas:', compareError);
+                res.status(500).send('Error al iniciar sesión');
             }
         } else {
             console.log('Usuario no encontrado');
@@ -132,9 +145,8 @@ app.delete('/usuarios/:rut', (req, res) => {
     });
 });
 
-
 // Iniciar el servidor
-const port = process.env.PORT || 3000; // Utiliza el puerto definido por el entorno o el 3000 por defecto
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Servidor escuchando en el puerto ${port}`);
 });
