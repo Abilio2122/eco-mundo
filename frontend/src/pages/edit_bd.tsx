@@ -12,7 +12,7 @@ const EditarNoticiasClimaticas: React.FC = () => {
 
   useEffect(() => {
     const fetchNoticias = async () => {
-      const response = await axios.get('http://192.168.0.23:3000/noticias_climaticas');
+      const response = await axios.get('http://localhost:3000/noticias_climaticas');
       setNoticias(response.data);
     };
     fetchNoticias();
@@ -24,7 +24,7 @@ const EditarNoticiasClimaticas: React.FC = () => {
 
   const handleSave = async () => {
     if (editingNoticia) {
-      const response = await axios.put(`http://192.168.0.23:3000/noticias_climaticas/${editingNoticia.id}`, editingNoticia);
+      const response = await axios.put(`http://localhost:3000/noticias_climaticas/${editingNoticia.id}`, editingNoticia);
       if (response.data.success) {
         setNoticias(noticias.map(n => (n.id === editingNoticia.id ? editingNoticia : n)));
         setEditingNoticia(null);
@@ -34,7 +34,7 @@ const EditarNoticiasClimaticas: React.FC = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(`http://192.168.0.23:3000/usuarios/${rutToDelete}`);
+      const response = await axios.delete(`http://localhost:3000/usuarios/${rutToDelete}`);
       if (response.data.success) {
         setAlertMessage('Usuario eliminado exitosamente');
         setShowAlert(true);
@@ -66,7 +66,7 @@ const EditarNoticiasClimaticas: React.FC = () => {
         ))}
         {editingNoticia && (
           <div>
-            <IonInput
+            <IonInput 
               value={editingNoticia.section_title}
               onIonChange={e => setEditingNoticia({ ...editingNoticia, section_title: e.detail.value })}
               className="editar-noticias-input"

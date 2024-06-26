@@ -49,4 +49,12 @@
   .editar-noticias-content button:hover {
     background-color: #45a049;
   }
+
+  .editar-noticias-input{
+    color: white;
+  }
   
+
+  .editar-noticias-textarea{
+    color: white;
+  }

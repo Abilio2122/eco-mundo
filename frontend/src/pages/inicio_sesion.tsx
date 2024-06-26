@@ -15,7 +15,7 @@ const Login: React.FC = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://192.168.0.23:3000/login', { rut, password });
+      const response = await axios.post('http://localhost:3000/login', { rut, password });
       if (response.data.success) {
         setToastMessage('Inicio de sesión exitoso');
         setShowToast(true);
