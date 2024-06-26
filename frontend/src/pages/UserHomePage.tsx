@@ -1,5 +1,6 @@
 import React from 'react';
 import { IonPage, IonContent, IonHeader, IonTitle, IonToolbar, IonText, IonApp, IonButton, IonList, IonItem, IonLabel, IonGrid, IonRow, IonCol, IonImg, IonFooter } from '@ionic/react';
+import img2 from '../MEDIA/Coloridos_peces_koi_alegran_los_canales_y_las_calles_de_esta_localidad_japonesa_4-8a8.webp';
 import './UserHomePage.css';
 
 const UserHomePage: React.FC = () => {
@@ -35,7 +36,7 @@ const UserHomePage: React.FC = () => {
             </IonCol>
             <IonCol size="12" size-md="6" size-lg="4">
               <div style={{ border: '2px solid #007bff', borderRadius: '5px', padding: '10px' }}>
-                <IonImg src="https://culturainquieta.com/wp-content/uploads/2020/02/Coloridos_peces_koi_alegran_los_canales_y_las_calles_de_esta_localidad_japonesa_4-8a8.jpg"/>
+                <IonImg src={img2}/>
                 <div style={{ backgroundColor: '#007bff', color: 'white', padding: '10px', borderRadius: '5px', maxWidth: '800px'}}>
                   <h1>Peces koi en las calles de japon</h1>
                   <p>las aguas de los canales de agua de japon son lo suficientemente puros como para que vivan los peces koi</p>
