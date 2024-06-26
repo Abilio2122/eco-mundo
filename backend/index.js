@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql2');
+const rateLimit = require('express-rate-limit'); // Importa express-rate-limit
 require('dotenv').config();
 
 const app = express();
@@ -31,6 +32,14 @@ db.connect((err) => {
     console.log('Conexión a la base de datos exitosa');
 });
 
+// Configura el límite de intentos de inicio de sesión
+const loginLimiter = rateLimit({
+    windowMs: 1 * 60 * 1000, // 1 minuto
+    max: 5, // límite de 5 solicitudes
+    message: 'Demasiados intentos de inicio de sesión, por favor intente de nuevo después de 1 minuto',
+    headers: true,
+});
+
 // Ruta para manejar la solicitud POST desde el frontend
 app.post('/registro', (req, res) => {
     const data = req.body; // Obtiene los datos del cuerpo de la solicitud
@@ -49,7 +58,8 @@ app.post('/registro', (req, res) => {
     });
 });
 
-app.post('/login', (req, res) => {
+// Aplica el limitador a la ruta de inicio de sesión
+app.post('/login', loginLimiter, (req, res) => {
     const { rut, password } = req.body;
 
     console.log('Datos recibidos para inicio de sesión:', { rut, password });
