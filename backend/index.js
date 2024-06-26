@@ -29,6 +29,9 @@ app.use(cors({
 // Configuración para servir archivos estáticos
 app.use('/images', express.static('public/images'));
 
+// Ocultar información del servidor en los encabezados HTTP
+app.disable('x-powered-by');
+
 // Configuración de la conexión a la base de datos
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -156,6 +159,12 @@ app.delete('/usuarios/:rut', (req, res) => {
         }
         res.json({ success: true, message: 'Usuario eliminado exitosamente' });
     });
+});
+
+// Manejo seguro de errores
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Algo salió mal!');
 });
 
 // Iniciar el servidor
