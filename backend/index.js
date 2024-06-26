@@ -12,8 +12,19 @@ const saltRounds = 10;
 // Middleware para procesar JSON
 app.use(bodyParser.json());
 
-// Configuración de CORS para permitir todas las solicitudes desde cualquier origen (*)
-app.use(cors());
+// Definir los orígenes permitidos
+const allowedOrigins = ['http://localhost:8100', 'http://127.0.0.1:8100'];
+
+// Configuración de CORS
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('No permitido por CORS'));
+        }
+    }
+}));
 
 // Configuración para servir archivos estáticos
 app.use('/images', express.static('public/images'));
@@ -59,7 +70,7 @@ app.post('/registro', async (req, res) => {
                 return;
             }
             console.log('Datos insertados:', result);
-        res.json({ message: 'Registro correcto' }); // Envía un mensaje conciso de vuelta al frontend
+            res.json({ message: 'Registro correcto' }); // Envía un mensaje conciso de vuelta al frontend
         });
     } catch (err) {
         console.error('Error al encriptar la contraseña:', err);
